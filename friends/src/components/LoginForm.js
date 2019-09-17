@@ -17,7 +17,6 @@ const LoginForm = (props) => {
         setIsLoading(true);
         axiosWithAuth().post('/login', user)
             .then(res => localStorage.setItem('token', res.data.payload))
-            .then(res => setIsLoading(false))
             .catch(err => console.log('Error', err));
         setUser({ username: '', password: '' });
         props.history.push('/friends');
