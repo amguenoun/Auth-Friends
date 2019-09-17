@@ -22,7 +22,7 @@ const FriendList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axiosWithAuth().post('/friends', { ...friend, id: friendList.length + 1 })
+        axiosWithAuth().post('/friends', { ...friend, id: Date.now() })
             .then(res => setFriendList(res.data))
             .catch(err => console.log('Error: ', err));
         setFriend({ name: '', age: '', email: '', id: '' })
