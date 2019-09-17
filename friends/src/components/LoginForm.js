@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const LoginForm = (props) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({ username: '', password: '' });
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleUserChange = (e) => {
         setUser({
@@ -13,9 +14,12 @@ const LoginForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         axiosWithAuth().post('/login', user)
             .then(res => localStorage.setItem('token', res.data.payload))
+            .then(res => setIsLoading(false))
             .catch(err => console.log('Error', err));
+        setUser({ username: '', password: '' });
         props.history.push('/friends');
     }
 
@@ -23,8 +27,8 @@ const LoginForm = (props) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <input name="username" placeholder="username" value={user.username} onChange={handleUserChange} />
-                <input name="password" placeholder="password" value={user.password} onChange={handleUserChange} />
-                <button type='submit'>Log In</button>
+                <input type="password" name="password" placeholder="password" value={user.password} onChange={handleUserChange} />
+                <button type='submit'>{isLoading ? 'Loading' : 'Log In'}</button>
             </form>
         </div>
     )
