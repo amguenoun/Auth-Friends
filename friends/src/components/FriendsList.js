@@ -32,7 +32,6 @@ const FriendList = () => {
         setFriendList(list);
     }
 
-
     console.log(friendList);
     return (
         <div>
