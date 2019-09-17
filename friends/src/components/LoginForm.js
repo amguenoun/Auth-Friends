@@ -16,10 +16,12 @@ const LoginForm = (props) => {
         e.preventDefault();
         setIsLoading(true);
         axiosWithAuth().post('/login', user)
-            .then(res => localStorage.setItem('token', res.data.payload))
+            .then(res => {
+                localStorage.setItem('token', res.data.payload);
+                props.history.push('/friends');
+            })
             .catch(err => console.log('Error', err));
         setUser({ username: '', password: '' });
-        props.history.push('/friends');
     }
 
     return (
