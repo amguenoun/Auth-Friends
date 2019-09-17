@@ -23,13 +23,18 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input name="username" placeholder="username" value={user.username} onChange={handleUserChange} />
-                <input type="password" name="password" placeholder="password" value={user.password} onChange={handleUserChange} />
-                <button type='submit'>{isLoading ? 'Loading' : 'Log In'}</button>
-            </form>
-        </div>
+        <>
+            <h1>Log In</h1>
+            <div className='login-div'>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <input name="username" placeholder="username" value={user.username} onChange={handleUserChange} />
+                        <input type="password" name="password" placeholder="password" value={user.password} onChange={handleUserChange} />
+                    </div>
+                    <button type='submit'>{isLoading ? 'Loading' : 'Log In'}</button>
+                </form>
+            </div>
+        </>
     )
 }
 

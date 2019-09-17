@@ -32,16 +32,18 @@ const FriendList = () => {
         setFriendList(list);
     }
 
-    console.log(friendList);
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='friendlist-div'>
+            <h1>Friend List</h1>
+            <form onSubmit={handleSubmit} className='add-from'>
                 <input type='text' name='name' placeholder='name' value={friend.name} onChange={handleFriendChange} />
                 <input type='text' name='age' placeholder='age' value={friend.age} onChange={handleFriendChange} />
                 <input type='text' name='email' placeholder='email' value={friend.email} onChange={handleFriendChange} />
                 <button type='submit'>Add Friend</button>
             </form>
-            {friendList.map(friend => <Friend key={friend.id} friend={friend} handleFriendListUpdate={handleFriendListUpdate} />)}
+            <div className='friend-grid'>
+                {friendList.map(friend => <Friend key={friend.id} friend={friend} handleFriendListUpdate={handleFriendListUpdate} />)}
+            </div>
         </div>
     );
 }
