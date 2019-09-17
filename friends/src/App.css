@@ -61,6 +61,11 @@
   cursor:pointer;
 }
 
+.add-from input {
+  border-radius:8px;
+  padding:0% 1%;
+}
+
 .add-from button:hover{
   color:black;
   background:white;
